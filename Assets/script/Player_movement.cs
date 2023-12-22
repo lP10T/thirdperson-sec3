@@ -24,7 +24,6 @@ public class Player_movement : MonoBehaviour
 
     public static Player_movement instance;
 
-
     private void Awake()
     {
         instance = this;
@@ -87,9 +86,4 @@ public class Player_movement : MonoBehaviour
         animator.SetTrigger("Jumping");
 
     }
-
-    
-
-    
-
 }

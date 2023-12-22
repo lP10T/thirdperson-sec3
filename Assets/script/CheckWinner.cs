@@ -36,24 +36,28 @@ public class CheckWinner : MonoBehaviour
         } 
     }
 
-    private void lateUpdate() 
+    private void LateUpdate() 
     {
-        playerRotation.LookAt(new Vector3(playerRotation.position.x, playerRotation.position.y, winnerCamera.transform.position.z));
-
+       
+ 
         if (target != null && isWinner) 
         {
-            Vector3 desiredPosition = new Vector3(target.position.x, target.position.y, target.position.z + 2.2f);
+            Vector3 desiredPosition = new Vector3(target.position.x - 5, target.position.y , target.position.z + 2.2f);
             Vector3 smoothedPosition = Vector3.Lerp(winnerCamera.transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
             winnerCamera.transform.position = smoothedPosition;
+            playerRotation.LookAt(new Vector3(playerRotation.position.x, playerRotation.position.y, winnerCamera.transform.position.z));
         }
     }
 
-    private void Ontriggerstay(Collider other) 
+
+    private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("player") && Player_movement.instance.groundPlayer) 
+        print("123");
+        if (other.CompareTag("Player") && Player_movement.instance.groundPlayer) 
         {
             isWinner = true;
         }
     }
+   
 
 }
